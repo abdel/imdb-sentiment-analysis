@@ -102,6 +102,5 @@ ENV/
 
 # jupyter
 .ipynb_checkpoints/
-data/
 *.pyc
 *.model
