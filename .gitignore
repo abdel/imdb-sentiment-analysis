@@ -104,3 +104,5 @@ ENV/
 .ipynb_checkpoints/
 *.pyc
 *.model
+data/
+*.csv
