@@ -103,6 +103,5 @@ ENV/
 # jupyter
 .ipynb_checkpoints/
 *.pyc
-data/
 *.csv
 *.png
