@@ -106,3 +106,4 @@ ENV/
 *.model
 data/
 *.csv
+*.png
