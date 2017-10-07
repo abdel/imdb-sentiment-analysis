@@ -1,0 +1,26 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+- apk add git --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/
+# Install git-lfs
+- apk add openssl --update-cache
+- wget -qO- https://github.com/git-lfs/git-lfs/releases/download/v2.1.1/git-lfs-linux-amd64-2.1.1.tar.gz | tar xz
+- mv git-lfs-*/git-lfs /usr/bin/ && rm -rf git-lfs-* && git lfs install && git lfs pull
+
+script:
+- git lfs pull
+# Login to Heroku registry
+- docker login --username=_ --password=$HEROKU_AUTH_TOKEN registry.heroku.com
+# Build the docker image locally
+- docker build -t registry.heroku.com/imdb-sentiment-analysis/web .
+# Push docker image to Heroku registry to serve
+- docker push registry.heroku.com/imdb-sentiment-analysis/web
+
+# deploy:
+#   provider: heroku
+#   api_key:
+#     secure: v9EZUnH5Uy5xDtzy44Mu7TxJ+3l1Wxe9SDsEi5B+B44iGZlYP+FMMxsFPRBNqx0pOYlY6SuxrZM2+yPI4UyMo5ZfexOSAcrhu7ZCfhBwna1mJ4dQdMeRgZJ9MSWoOLyS5lUbLh5VB4Q5uTzFfwr3scCwnduPeXSrsCHButDd8jgENx+WSd9SNgHbxM+CEFsZBROzGl1js95ge0lOua9hEy0W+rS1txBC8SlkDJD6n9cBz2qI3XuAZc4r36xso14p7ZmEhIrH2hUfNUZfD9V1HlT6AAznLlGzQ7bUrz7oLY6iOZv7sOOP+A5dq3R/FJABNEbW2ZcVs+T9U1FqLl0OWE1S4RFIvEy75Jp7en42ZfrxnB3NGNYwyOsArAguteECYoo/nR7ZBaxyHEDAp2zWYyLFrIzdOt2XsEkLbq7a+1kUqpMeIWta7C7Ds2hfxMxR8xjOcxhoo3orrub0qzkXh1PbQC3gZ13DBp3/EJH8gIlKgIY6rVzvhQqlh+cXx3V8RXn+SOGi67Ht00mH75qCcib24y21JLaoJt111hT5BGeLnjvuhDWpr6OnVWVBHtI/nwk9EBpqEmFsFTq4sW2/AOUtVU44uJ5fjjT6PkJ1fxJ0pPMJoPV1pOQnO22aKaBdcPUK+P4xwm+DoUaXfgT3GA2S63RyncDJ9no0T33ZCvQ=
+#   app: imdb-sentiment-analysis
