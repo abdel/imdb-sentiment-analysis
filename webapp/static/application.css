@@ -1,0 +1,31 @@
+body {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+#content {
+    flex: 1;
+}
+
+h1.title {
+    margin-bottom: 40px !important;
+}
+
+#text {
+    height: 100px !important;
+}
+
+.container {
+    max-width: 960px;
+}
+
+.results {
+    padding-left: 0 !important;
+}
+
+#error {
+    color: #fff;
+    background-color: #ff3f49;
+    margin: 30px 0;
+}
