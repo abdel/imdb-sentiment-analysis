@@ -11,5 +11,5 @@ class DevelopmentConfig(Config):
     ASSET_DOMAIN = 'localhost=5000'
 
 class ProductionConfig(Config):
-    DOMAIN = 'sentiment.abdel.me'
-    ASSET_DOMAIN = 'sentiment.abdel.me'
+    DOMAIN = 'imdb-sentiment-analysis.herokuapp.com'
+    ASSET_DOMAIN = 'imdb-sentiment-analysis.herokuapp.com'

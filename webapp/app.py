@@ -11,6 +11,7 @@ from plim import preprocessor
 from keras.models import load_model
 
 app = Flask(__name__, instance_relative_config=True)
+
 # For Plim templates
 mako = MakoTemplates(app)
 app.config['MAKO_PREPROCESSOR'] = preprocessor
@@ -22,11 +23,12 @@ def homepage():
 
 @app.route('/predict', methods=['POST'])
 def predict():
+    # Get input text and convert to lower case
     text = request.form.get('text', type=str)
     text = text.lower()
 
+    # Get predictions
     prob, pred = utils.predict(text)
-
     print("Prediction Probability:", prob)
     print("Prediction Class:", pred)
 

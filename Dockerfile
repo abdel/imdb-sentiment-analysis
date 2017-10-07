@@ -1,15 +1,14 @@
 FROM heroku/miniconda
 
-# Grab requirements.txt.
+# Get requirements.txt
 ADD ./webapp/requirements.txt /tmp/requirements.txt
 
-# Install dependencies
+# Install packages
 RUN pip install -qr /tmp/requirements.txt
 
-# Add our code
+# Add web app
 ADD ./webapp /opt/webapp/
 WORKDIR /opt/webapp
 
-RUN conda install scikit-learn
-
+# Start web server
 CMD gunicorn --threads 20 --bind 0.0.0.0:$PORT --timeout 120 wsgi
