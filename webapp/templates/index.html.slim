@@ -3,6 +3,10 @@
   #content.container
     .row
       .col-md-push-2.col-md-8.col-xs-12
+        p This application is using a <a href="http://github.com/abdel/imdb-sentiment-analysis">pre-trained convolutional neural network</a> on the <a href="http://ai.stanford.edu/~amaas/data/sentiment/">Large Movie Review Dataset</a>. The model achieved approximately 89% classification accuracy on the testing dataset.
+        p Instances with a probability of 0.5 or greater are classified as <strong style="color: #3c763d">positive</strong>, while instances with a probability less than 0.5 are classified as <strong style="color: #a94442">negative</strong>.
+        br
+
         form#sentiment-form.form-horizontal method="post" action="/predict"
           div.form-group
             textarea#text.form-control placeholder="Enter the text you want to analyse"
