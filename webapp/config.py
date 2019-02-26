@@ -9,7 +9,3 @@ class Config(object):
 class DevelopmentConfig(Config):
     DOMAIN = 'localhost=5000'
     ASSET_DOMAIN = 'localhost=5000'
-
-class ProductionConfig(Config):
-    DOMAIN = 'imdb-sentiment-analysis.herokuapp.com'
-    ASSET_DOMAIN = 'imdb-sentiment-analysis.herokuapp.com'
