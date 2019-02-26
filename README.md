@@ -7,7 +7,7 @@
 ## Requirements
 - Python 3+
 - Tensorflow, Keras, scikit-learn
-- numpy, pandas, matplotlib, wordcloud
+- numpy, pandas, matplotlib, wordclouddd
 
 ## Deployment
 The web application is deployed automatically to Heroku using Travis and Docker.
